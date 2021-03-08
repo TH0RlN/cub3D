@@ -6,7 +6,7 @@
 /*   By: rarias-p <rarias-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 19:26:09 by rarias-p          #+#    #+#             */
-/*   Updated: 2021/02/25 12:52:20 by rarias-p         ###   ########.fr       */
+/*   Updated: 2021/03/08 16:28:01 by rarias-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	color(t_data *data, char dir, int i)
 		}
 		i++;
 	}
+	free(data->line);
 }
 
 void	resolution(t_data *data, int i)
@@ -78,6 +79,7 @@ void	resolution(t_data *data, int i)
 		else
 			i++;
 	}
+	free(data->line);
 }
 
 void	text(t_data *data, char *dir, int i)
@@ -98,6 +100,7 @@ void	text(t_data *data, char *dir, int i)
 				data->text_sp = ft_strdup(&data->line[i]);
 			if (!(ft_strncmp(dir, "S2", 2)))
 				data->text_sp2 = ft_strdup(&data->line[i]);
+			free(data->line);
 			break ;
 		}
 		i++;

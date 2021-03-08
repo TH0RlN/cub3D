@@ -6,7 +6,7 @@
 /*   By: rarias-p <rarias-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 17:50:10 by rarias-p          #+#    #+#             */
-/*   Updated: 2021/02/25 12:59:18 by rarias-p         ###   ########.fr       */
+/*   Updated: 2021/03/08 16:59:48 by rarias-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,4 +121,6 @@ void	sprites(t_data *data)
 	}
 	sort_sprites(data, 0);
 	sprites2(data);
+	free(data->sprite_order);
+	free(data->sprite_distance);
 }

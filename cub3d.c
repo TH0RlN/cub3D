@@ -6,11 +6,28 @@
 /*   By: rarias-p <rarias-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/10 17:45:40 by rarias-p          #+#    #+#             */
-/*   Updated: 2021/02/23 18:03:46 by rarias-p         ###   ########.fr       */
+/*   Updated: 2021/03/08 16:35:54 by rarias-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	init_loop(t_data *data)
+{
+	data->z_buffrer = malloc((sizeof(double)) * data->resx + 1);
+	start_direction(data);
+	data->mlx_ptr = mlx_init();
+	data->resx = data->resx > 2560 ? 2560 : data->resx;
+	data->resy = data->resy > 1440 ? 1440 : data->resy;
+	data->win_ptr = mlx_new_window(data->mlx_ptr, data->resx, data->resy,
+	"CUB3D");
+	if (data->resy < 50 || data->resx < 50)
+		low_res(data);
+	if (!(data->is_pos == 1))
+		no_map();
+	system("afplay rain.mp3 &");
+	main_loop(data);
+}
 
 int		main(int argc, char const *argv[])
 {
@@ -31,7 +48,7 @@ int		main(int argc, char const *argv[])
 	get_data(data);
 	check_map(data);
 	if (!(errors(data)) && argc < 3)
-		main_loop(data);
+		init_loop(data);
 	else if (!(errors(data)) && !(ft_strcmp("--save", argv[2])))
 		save_bmp(data);
 	else if (!(errors(data)) && (ft_strcmp("--save", argv[2])))

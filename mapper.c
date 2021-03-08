@@ -6,7 +6,7 @@
 /*   By: rarias-p <rarias-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 20:04:14 by rarias-p          #+#    #+#             */
-/*   Updated: 2021/03/05 20:29:14 by rarias-p         ###   ########.fr       */
+/*   Updated: 2021/03/08 16:22:27 by rarias-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	mapper(t_data *data)
 	map = ft_strdup(data->map);
 	free(data->map);
 	data->map = ft_strjoin(map, data->line);
+	free(map);
 	free(data->line);
 	data->lines_map++;
 	string_to_matrix(data);

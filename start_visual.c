@@ -6,7 +6,7 @@
 /*   By: rarias-p <rarias-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/09 18:41:52 by rarias-p          #+#    #+#             */
-/*   Updated: 2021/03/05 16:18:57 by rarias-p         ###   ########.fr       */
+/*   Updated: 2021/03/08 16:58:15 by rarias-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,18 +68,6 @@ void	start_direction(t_data *data)
 
 void	main_loop(t_data *data)
 {
-	data->z_buffrer = malloc((sizeof(double)) * data->resx + 1);
-	start_direction(data);
-	data->mlx_ptr = mlx_init();
-	data->resx = data->resx > 2560 ? 2560 : data->resx;
-	data->resy = data->resy > 1440 ? 1440 : data->resy;
-	data->win_ptr = mlx_new_window(data->mlx_ptr, data->resx, data->resy,
-	"CUB3D");
-	if (data->resy < 50 || data->resx < 50)
-		low_res(data);
-	if (!(data->is_pos == 1))
-		no_map();
-	system("afplay rain.mp3 &");
 	mlx_loop_hook(data->mlx_ptr, drawer, data);
 	mlx_hook(data->win_ptr, 17, 0, salida, (void *)data);
 	mlx_hook(data->win_ptr, 2, 0, keys_press, (void *)data);
